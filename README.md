@@ -9,6 +9,7 @@ Link to the ERD Diagram for the Pewlett Hackard data:
 
 ### Find all employees who are eligible for retirement
 -- Query to find the employees who are elgible for retirements:
+```
    SELECT e.emp_no,e.first_name,e.last_name,
        ti.title, ti.from_date,
 	   s.salary
@@ -21,6 +22,7 @@ Link to the ERD Diagram for the Pewlett Hackard data:
    WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
    AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
    ORDER BY e.emp_no ASC;
+```
 -- Query return emp no, first name, last name, title, salary information from employees, titles, and salaries table for all employees whose birth date is between 1952 and 1955 and hire date is between 1985 and 1988
 -- The above query returns the following data:
 [Employees eligible for retirement](https://github.com/anshurathore11/Pewlett-Hackard-Analysis/blob/master/Data/emp_title_salary_retirees.csv)
@@ -31,6 +33,7 @@ Link to the ERD Diagram for the Pewlett Hackard data:
 
 ### Find count of titles of employees who are eligible for retirement
 -- Query to find the count of titles of employees who are eligible for retirement:
+```
    SELECT stemp.title, COUNT(stemp.title)
    INTO emp_title_retirees_count_bytitle
    FROM
@@ -44,6 +47,7 @@ Link to the ERD Diagram for the Pewlett Hackard data:
      FROM emp_title_salary_retirees
      ) tmp WHERE rn = 1) AS stemp
      GROUP BY stemp.title;
+```
 -- Query returns count of titles of all employees who are eligible for retirement
 -- The above query returns the following data:
 [Title count of all employees who are eligible for retirement](https://github.com/anshurathore11/Pewlett-Hackard-Analysis/blob/master/Data/emp_title_retirees_count_bytitle.csv)
@@ -59,6 +63,7 @@ Link to the ERD Diagram for the Pewlett Hackard data:
  
 ### Employees eligible for being a mentor
 -- Query to find employees eligible for being a mentor:
+```
     SELECT e.emp_no,e.first_name,e.last_name,
           ti.title, ti.from_date, ti.to_date
     INTO emp_titles_subset
@@ -68,6 +73,7 @@ Link to the ERD Diagram for the Pewlett Hackard data:
     WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
     AND ti.to_date = '9999-01-01'
     ORDER BY e.emp_no ASC;
+```
 -- Query returns list of mentors whose birth date is between Jan 1, 1965 and Dec 31, 1965
 -- The above query returns the following data:
 [List of mentors](https://github.com/anshurathore11/Pewlett-Hackard-Analysis/blob/master/Data/emp_titles_subset.csv)
